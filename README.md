@@ -8,7 +8,7 @@ The name of the department: to do
 
 Submit:
 Noga Jacobs 206970519
-Adina kallus 
+Adina kallus 328793963
 
 
 במסמך צריך להיות לשבוע הבא

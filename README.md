@@ -1,4 +1,4 @@
-![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/328daa84-77e5-4027-9e70-0d68f6265a23)![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/59929a3e-b07f-4e4a-bda2-ea4317cebb87)# DatabaseProject
+# DatabaseProject
 מיני פרויקט בבסיסי נתונים
 שם הארגון: עיריית ירושלים
 שם המחלקה: צהרונים
@@ -39,7 +39,7 @@ Teacher (▁(T_ID), D_ID, Name, D.O.B, Degree, Phone, Seniority)
 TO DO!! 
 
 תרשים ERD:
-TO DO!!
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/328daa84-77e5-4027-9e70-0d68f6265a23)![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/59929a3e-b07f-4e4a-bda2-ea4317cebb87)
 
 תרשים DSD:
 TO DO!!

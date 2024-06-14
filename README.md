@@ -39,10 +39,11 @@ Teacher (▁(T_ID), D_ID, Name, D.O.B, Degree, Phone, Seniority)
 TO DO!! 
 
 תרשים ERD:
-![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/328daa84-77e5-4027-9e70-0d68f6265a23)![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/59929a3e-b07f-4e4a-bda2-ea4317cebb87)
-
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/328daa84-77e5-4027-9e70-0d68f6265a23)
 תרשים DSD:
-TO DO!!
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/0361df78-f53b-4b6b-96f4-5e2e52ff3c8f)
+
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/72e5ac58-072b-4dcf-8e47-8ca0fe3debb0)
 
 יצירת הטבלאות:
 
@@ -80,28 +81,47 @@ CREATE TABLE Catering
 CREATE TABLE Activities
 (
   Contact_Number VARCHAR2 (20) NOT NULL,
-  
+  Activity_Type VARCHAR2 (100) NOT NULL,
+  Operator_Name VARCHAR2 (100) NOT NULL,
+  RIMARY KEY (Contact_Number),
+  UNIQUE (Operator_Name)
 );
-Mini project in databases
 
-The organization name: to do
+CREATE TABLE Daycare_Activities
+(
+  D_ID INT NOT NULL,
+  Contact_Number VARCHAR2 (20) NOT NULL,
+  RIMARY KEY (D_ID, Contact_Number),
+  FOREIGN KEY (D_ID) REFERENCES Daycare (D_ID),
+  FOREIGN KEY (Contact_Number) REFERENCES Activities
+);
 
-The name of the department: to do
+CREATE TABLE Teacher 
+(
+  T_ID INT NOT NULL,
+  Teacher_Name VARCHAR2 (100) NOT NULL,
+  Teacher_DOB DATE NOT NULL,
+  Degree VARCHAR2 (100) NOT NULL,
+  Teacher_Phone VARCHAR2 (20) NOT NULL,
+  Seniority VARCHAR2 (50) NOT NULL,
+  D_ID INT NOT NULL,
+  PRIMARY KEY (T_ID),
+  FOREIGN KEY (D_ID) REFERENCES Daycare (D_ID),
+);
 
-Submit:
-Noga Jacobs 206970519
-Adina kallus 328793963
+CREATE TABLE Registration
+(
+  Price INT NOT NULL,
+  Registration_ID INT NOT NULL,
+  Registration_Date DATE NOT NULL,
+  D_ID INT NOT NULL,
+  Child_ID INT NOT NULL,
+  PRIMARY KEY (Registration_ID, D_ID),
+  FOREIGN KEY (D_ID) REFERENCES Daycare (D_ID),
+  FOREIGN KEY (Child_ID) REFERENCES Child (Child_ID)
+);
 
-
-במסמך צריך להיות לשבוע הבא
-
-1.חצי עמוד תיאור הארגון שבחרתן
-
-2. בעמוד הבא תכניסו את הERD של הארגון אחרי שיצרתם אותו בעזרת התוכנה של ERDPlus
-
-3 לייצר DSD של הארגון
-
-4. לייצר סקריפט ליצירת הטבלאות
+- להוסיף תמונות של CREATE !! TO DO!!
 
 5. להכניס נתונים לחלק מהטבלאות בעזרת אחת השיטות
 

@@ -53,14 +53,17 @@ TO DO!!
 
 CREATE TABLE Child 
 (
+
   Child_ID INT NOT NULL,
   Child_DOB DATE NOT NULL,
   Child_Name VARCHAR2 (100) NOT NULL,
   PRIMARY KEY (Child_ID)
+
 );
 
 CREATE TABLE Daycare
 (
+
   Sector VARCHAR2 (100) NOT NULL,
   Daycare_Name VARCHAR2 (100) NOT NULL,
   Location VARCHAR2 (100) NOT NULL,
@@ -68,10 +71,12 @@ CREATE TABLE Daycare
   Close_Time TIMESTAMP NOT NULL,
   D_ID INT NOT NULL,
   PRIMARY KEY (D_ID)
+
 );
 
 CREATE TABLE Catering
 (
+
   Phone_Number VARCHAR2 (20) NOT NULL,
   Kashrut VARCHAR2 (50) NOT NULL,
   Catering_Name VARCHAR2 (100) NOT NULL,
@@ -80,28 +85,34 @@ CREATE TABLE Catering
   D_ID INT NOT NULL,
   PRIMARY KEY (C_ID),
   PRIMARY KEY (D_ID) REFERENCES Daycare (D_ID)
+
 );
 
 CREATE TABLE Activities
 (
+
   Contact_Number VARCHAR2 (20) NOT NULL,
   Activity_Type VARCHAR2 (100) NOT NULL,
   Operator_Name VARCHAR2 (100) NOT NULL,
   RIMARY KEY (Contact_Number),
   UNIQUE (Operator_Name)
+
 );
 
 CREATE TABLE Daycare_Activities
 (
+  
   D_ID INT NOT NULL,
   Contact_Number VARCHAR2 (20) NOT NULL,
   RIMARY KEY (D_ID, Contact_Number),
   FOREIGN KEY (D_ID) REFERENCES Daycare (D_ID),
   FOREIGN KEY (Contact_Number) REFERENCES Activities
+
 );
 
 CREATE TABLE Teacher 
 (
+
   T_ID INT NOT NULL,
   Teacher_Name VARCHAR2 (100) NOT NULL,
   Teacher_DOB DATE NOT NULL,
@@ -111,10 +122,12 @@ CREATE TABLE Teacher
   D_ID INT NOT NULL,
   PRIMARY KEY (T_ID),
   FOREIGN KEY (D_ID) REFERENCES Daycare (D_ID),
+
 );
 
 CREATE TABLE Registration
 (
+
   Price INT NOT NULL,
   Registration_ID INT NOT NULL,
   Registration_Date DATE NOT NULL,
@@ -123,6 +136,7 @@ CREATE TABLE Registration
   PRIMARY KEY (Registration_ID, D_ID),
   FOREIGN KEY (D_ID) REFERENCES Daycare (D_ID),
   FOREIGN KEY (Child_ID) REFERENCES Child (Child_ID)
+
 );
 
 - להוסיף תמונות של CREATE !! TO DO!!

@@ -139,48 +139,53 @@ CREATE TABLE Registration
 
 );
 
-- להוסיף תמונות של CREATE !! TO DO!!
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/72c34823-f73a-47f0-bab0-37fcbc5f5a16)
 
-5. להכניס נתונים לחלק מהטבלאות בעזרת אחת השיטות
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/66a47412-54f7-45ad-a8ff-43684ddc0ca7)
 
-לשם המטלות הללו עליכן:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/ca6bba04-7348-4b05-8d1b-3e6cab8a3306)
 
-לקרוא על הארגון (אגף) שבחרתן ולהבין מה יש שם
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/a429507a-2cb4-4271-8a32-12b88d81ea91)
 
-לשמוע את 3 הסרטונים הראשונים המופיעים אצלי בשלב הראשון
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/62b32e25-623a-4b20-99ac-b59ebfe15dff)
 
-לעבור על המצגת של משה גולדשטיין שנמצאת אצלי בשלב הראשון ומפרשת את ההבדלים בין המודל של אולמן שלמדנו בהרצאה לבין המודל של התוכנה ERDPlus
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/460d0ea1-5706-417c-924f-fdd99a287f91)
 
-What I'm asking for next week:
+![Uploading image.png…]()
 
-A. Installing the software we need this semester (oracle, plsqldeveloper git) installation videos are in my model or alternatively decide on remote work, check that you know how to log in, that it works and manage to remotely connect to the oracle server.
+הכנסה באמצעות SQL:
+insert by SQL:
+insert to Child:
+insert into Child ( Child_Name, Child_DOB, Child_ID ) values ('Matan Oren', TO_DATE('2020-06-01', 'YYYY-MM-DD'), 11);
+insert into Child ( Child_Name, Child_DOB, Child_ID ) values ('Dvir Lavi', TO_DATE('2020-05-01', 'YYYY-MM-DD'), 12);
+insert into Child ( Child_Name, Child_DOB, Child_ID ) values ('Ori Cohen', TO_DATE('2020-03-01', 'YYYY-MM-DD'), 13);
 
-B. Creating a Google Docs/README document that will be the basis of your report.
+insert to Daycare:
+insert into Daycare (Open_Time, Close_Time, Location, Daycare_Name, Sector, D_ID ) values ( TO_TIMESTAMP('2024-01-09 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2024-01-09 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Jaffa St 99, Jerusalem', 'Happy Kids', 'Charedi', 21); 
+insert into Daycare (Open_Time, Close_Time, Location, Daycare_Name, Sector, D_ID ) values ( TO_TIMESTAMP('2024-01-09 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2024-01-09 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'Hebron Rd 26, Jerusalem', 'Little Star', 'Dati', 22); 
+insert into Daycare (Open_Time, Close_Time, Location, Daycare_Name, Sector, D_ID ) values ( TO_TIMESTAMP('2024-01-09 13:00:00', 'YYYY-MM-DD HH24:MI:SS'), TO_TIMESTAMP('2024-01-09 16:00:00', 'YYYY-MM-DD HH24:MI:SS'), 'King George St 22, Jerusalem', 'Tiny Tots', 'Dati', 23); 
 
-The document should be for next week
+insert to Activities:
+insert into Activities ( Operator_Name, Activities_Type, Contact_Number) values ('TO DO!!', 'Music', '0526377886');  
+insert into Activities ( Operator_Name, Activities_Type, Contact_Number) values ('TO DO!!', 'Art', '0526377999'); 
+insert into Activities ( Operator_Name, Activities_Type, Contact_Number) values ('TO DO!!', 'Sports', '0526388899'); 
 
-1. A half page description of the organization you have chosen
+insert to Daycare Activities:
+insert into Daycare_Activities ( D_Activities_D_ID, D_Activities_Operator_Name ) values ( 21, TO DO!! );
+insert into Daycare_Activities ( D_Activities_D_ID, D_Activities_Operator_Name ) values ( 22, TO DO!! );
+insert into Daycare_Activities ( D_Activities_D_ID, D_Activities_Operator_Name ) values ( 23, TO DO!! );
 
-2. On the next page you will enter the ERD of the organization after you have created it with the help of the ERDPlus software
+insert to teacher:
+insert into Teacher ( T_ID, Teacher_Name, Teacher_DOB, Degree, Teacher_Phone, Seniority, D_ID ) values ( 31, 'Yael Cohen', TO_DATE('2015-06-01', 'YYYY-MM-DD'), 'Bachelor', '0536666555', 'Experienced', 21);
+insert into Teacher ( T_ID, Teacher_Name, Teacher_DOB, Degree, Teacher_Phone, Seniority, D_ID ) values ( 32, 'Maya Levi', TO_DATE('2014-06-01', 'YYYY-MM-DD'), 'Master', '0536666556', 'Experienced', 22);
+insert into Teacher ( T_ID, Teacher_Name, Teacher_DOB, Degree, Teacher_Phone, Seniority, D_ID ) values ( 33, 'Noa Cohen', TO_DATE('2013-06-01', 'YYYY-MM-DD'), 'Master', '0536666557', 'Experienced', 23);
 
-3 Produce DSD of the organization
+insert to Catering:
+insert into Catering ( Phone_Number, Kashrut, Location, C_ID, Catering_Name, D_ID ) values ( '0545888666', 'Rubin', 'Catering Cohen', 21 );
+insert into Catering ( Phone_Number, Kashrut, Location, C_ID, Catering_Name, D_ID ) values ( '0545888667', 'Bet Yosef', 'Catering Kids', 22 );
+insert into Catering ( Phone_Number, Kashrut, Location, C_ID, Catering_Name, D_ID ) values ( '0545888668', 'Rubin', 'Healthy Catering', 23 );
 
-4. Produce a script to create the tables
-
-5. Insert data into some of the tables using one of the methods
-
-
-
-For these tasks you have to:
-
-
-
-Read about the organization (department) you have chosen and understand what is there
-
-Listen to the first 3 videos that appear in my first step
-
-Go through Moshe Goldstein's presentation that I have in the first stage and explains the differences between the Ullman model we learned in the lecture and the model of the ERDPlus software
-
-Questions can be contacted by email
-
-milston@g.jct.ac.il
+insert to Registration:
+insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 41, 21, 11);
+insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 42, 22, 12);
+insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 43, 23, 13);

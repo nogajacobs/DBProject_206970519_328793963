@@ -481,10 +481,14 @@ WHERE  d.Location ='&<name="location" list="select location from daycare">'
 
 
 אילוץ 2:
+
+
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/bf8428cd-5ef4-4121-b5ef-7a6023f5b999)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/9fc6e7b6-d654-4ef2-95c0-d8c213456149)
 
 אילוץ 3:
+
+
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/50518a70-35af-42a7-88b7-ba945b5a3c91)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/4f27df40-53f3-4b58-b5b4-cab21bf1ae3c)
 

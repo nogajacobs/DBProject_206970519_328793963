@@ -40,7 +40,17 @@ Child (▁(Child _ID), Name, D.O.B)
 Teacher (▁(T_ID), D_ID, Name, D.O.B, Degree, Phone, Seniority)
 
 פירוט הקשרים: 
-TO DO!! 
+Works in(Teacher, Daycare) 
+יחיד לרבים, כיון שגננת יכולה ללמד רק בצהרון אחד, ואילו כמה גננות יכולות ללמד באותה צהרון.
+Uses (Daycare, Catering)
+יחיד לרבים, כיון שצהרון משתמש רק בקייטרינג אחד, ואילו קיטרינג אחד יכול לעבוד בשביל כמה צהרונים.
+Belongs to (Daycare, Registration)
+יחיד לרבים, כיון שכל רישום שייך לצהרון אחד, אבל צהרון יכול לקבל כמה רישומים
+Registers (Daycare, Catering)
+יחיד ליחיד, כיון שבכל רישום יש ילד אחד, וכל ילד יכול להרשם פעם אחת
+Daycare Activities(Daycare, Activities)
+רבים לרבים, כיון שצהרון משתמש בכמה פעילויות, ופעילות יכול להתקיים בכמה צהרונים
+
 
 תרשים ERD:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/328daa84-77e5-4027-9e70-0d68f6265a23)
@@ -151,7 +161,7 @@ CREATE TABLE Registration
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/460d0ea1-5706-417c-924f-fdd99a287f91)
 
-![Uploading image.png…]()
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/a542ed5d-2cdd-4ce2-ab61-6b298ff2ac62)
 
 הכנסה באמצעות SQL:
 insert by SQL:
@@ -189,3 +199,56 @@ insert to Registration:
 insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 41, 21, 11);
 insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 42, 22, 12);
 insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 43, 23, 13);
+
+
+insert by excel:
+insert to Child:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/a7f575cf-e51e-490b-a97b-7c7bf610cbe7)
+
+insert to Activities:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/819d8267-8e8b-44a6-ad81-317969b22303)
+
+
+insert to Daycare Activities:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/56af1536-3871-4edf-a232-db38c34da02e)
+
+insert to catering:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/fa11dcc9-23f3-40bd-8a89-6c5ac673f0b6)
+
+insert to Registration:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/95ffeb9c-f2ad-4b53-97f5-645cb4b0fdce)
+
+insert by TXT:
+insert to Child:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/7c913cee-7762-48fe-8abe-4521c6f2f5a6)
+
+insert to Daycare:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/279ede42-e75d-4bb7-8935-0b3da84c4d2e)
+
+insert to Activities:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/e720e249-ca2b-48ba-a95d-1ef97129c552)
+
+insert to Daycare Activities:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/63915a98-2b79-499d-83a0-a022fef1189c)
+
+insert to Catering:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/2e76cb75-dc43-495a-b1c9-5814bef92248)
+
+insert to Registration:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/9f74152e-485e-4f22-abc1-012087b480a0)
+
+insert to Teacher:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/ce2e3c93-3c1f-4cc0-bf4e-8843bf260173)
+
+
+Backup:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/4d83d949-09e1-4a11-91b7-eb7c83c9942d)
+
+Drop script:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/55cda756-7c2f-4964-93dc-c65e1e373a2f)
+
+
+Restore:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/4523d210-858d-4426-b23b-81ef22171969)
+
+

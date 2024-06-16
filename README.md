@@ -240,6 +240,18 @@ insert to Registration:
 insert to Teacher:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/ce2e3c93-3c1f-4cc0-bf4e-8843bf260173)
 
+insert by Data Generator:
+insert to Child:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/8094c324-edc4-4cfd-89b2-9b691a278c9f)
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/82d018b7-7eaf-4a61-80b7-c9dacb5793c3)
+
+insert to Daycare Activities:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/cb0fe24b-3659-402e-a44e-145bf1265bd9)
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/747e40f8-5dbb-4186-9e93-dd5dcce7ab96)
+
+
+
+
 פה שמנו לב שיש טעות בקשר בין Catering, Daycare.
 אז ביצענו: drop table catering
 

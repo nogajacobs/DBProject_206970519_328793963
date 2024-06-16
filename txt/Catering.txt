@@ -1,0 +1,52 @@
+
+0549876543,Rabanut Mehadrin,Tel Aviv,1,Catering Delight
+0548765432,Rabanut,Jerusalem,2,Healthy Meals
+0547654321,Beit Yosef,Haifa,3,Fresh Catering
+0546543210,Eda Charedit,Beersheba,4,Tasty Bites
+0545432109,Rubin,Netanya,5,Yummy Catering
+0544321098,Bet yosef,Holon,6,Gourmet Meals
+0543210987,Mehuderet,Rishon LeZion,7,Delicious Catering
+0542109876,Rabanut Mehadrin,Petah Tikva,8,Home Style
+0541098765,Rabanut,Ashdod,9,Organic Catering
+0540987654,Beit Yosef,Bat Yam,10,Family Meals
+0549876541,Eda Charedit,Bnei Brak,11,Happy Catering
+0548765430,Rubin,Herzliya,12,Healthy Eats
+0547654329,Bet yosef,Ramat Gan,13,Fresh & Tasty
+0546543218,Mehuderet,Rehovot,14,Kids Delight
+0545432107,Rabanut Mehadrin,Kfar Saba,15,Happy Tummy
+0544321096,Rabanut,Ra'anana,16,Wholesome Meals
+0543210985,Beit Yosef,Ramat Hasharon,17,Family Delights
+0542109874,Eda Charedit,Hadera,18,Kids Catering
+0541098763,Rubin,Hod Hasharon,19,Tasty Treats
+0540987652,Bet yosef,Yavne,20,Healthy Kids
+0549876540,Mehuderet,Modi'in,21,Happy Meals
+0548765439,Rabanut Mehadrin,Kiryat Gat,22,Delicious Eats
+0547654328,Rabanut,Ashkelon,23,Tasty & Healthy
+0546543217,Beit Yosef,Raanana,24,Wholesome Kids
+0545432106,Eda Charedit,Beit Shemesh,25,Yummy Eats
+0544321095,Rubin,Modi'in Illit,26,Fresh & Healthy
+0543210984,Bet yosef,Giv'atayim,27,Healthy Delights
+0542109873,Mehuderet,Afula,28,Family Style
+0541098762,Rabanut Mehadrin,Akko,29,Kids Gourmet
+0540987651,Rabanut,Yehud,30,Wholesome Delights
+0549876539,Beit Yosef,Rosh HaAyin,31,Healthy Treats
+0548765438,Eda Charedit,Dimona,32,Tasty Meals
+0547654327,Rubin,Netivot,33,Happy Eats
+0546543216,Bet yosef,Tirat Carmel,34,Fresh Treats
+0545432105,Mehuderet,Kfar Saba,35,Delicious Delights
+0544321094,Rabanut Mehadrin,Nahariya,36,Healthy & Tasty
+0543210983,Rabanut,Ariel,37,Family Catering
+0542109872,Beit Yosef,Ness Ziona,38,Tasty Kids
+0541098761,Eda Charedit,Or Akiva,39,Yummy Delights
+0540987650,Rubin,Nesher,40,Healthy Bites
+0549876538,Bet yosef,Yokneam,41,Wholesome Eats
+0548765437,Mehuderet,Ma'ale Adumim,42,Happy Treats
+0547654326,Rabanut Mehadrin,Karmiel,43,Tasty Delights
+0546543215,Rabanut,Kiryat Bialik,44,Healthy Treats
+0545432104,Beit Yosef,Kiryat Shmona,45,Delicious Bites
+0544321093,Eda Charedit,Rehovot,46,Wholesome Meals
+0543210982,Rubin,Hadera,47,Healthy Eats
+0542109871,Bet yosef,Kiryat Yam,48,Kids Treats
+0541098760,Mehuderet,Yavne,49,Tasty Treats
+0540987649,Rabanut Mehadrin,Arad,50,Happy Eats
+```

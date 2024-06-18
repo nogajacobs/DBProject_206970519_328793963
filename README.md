@@ -249,7 +249,14 @@ insert to Daycare Activities:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/cb0fe24b-3659-402e-a44e-145bf1265bd9)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/747e40f8-5dbb-4186-9e93-dd5dcce7ab96)
 
+insert by Data Generator:
+insert to Child:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/a99e32d3-93c7-4a89-b123-0e9b5166a5f9)
 
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/5b2eae51-4e66-4725-a990-7a53e76bd07a)
+
+insert to Daycare Activities
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/531a34e3-b716-446f-9574-847128d48238)
 
 
 פה שמנו לב שיש טעות בקשר בין Catering, Daycare.

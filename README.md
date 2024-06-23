@@ -164,6 +164,7 @@ CREATE TABLE Registration
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/a542ed5d-2cdd-4ce2-ab61-6b298ff2ac62)
 
 הכנסה באמצעות SQL:
+```SQL
 insert by SQL:
 insert to Child:
 insert into Child ( Child_Name, Child_DOB, Child_ID ) values ('Matan Oren', TO_DATE('2020-06-01', 'YYYY-MM-DD'), 11);
@@ -199,7 +200,7 @@ insert to Registration:
 insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 41, 21, 11);
 insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 42, 22, 12);
 insert into Registration ( Price, Registration_Date, Registration_ID, Registration_D_ID, Registration_Child_ID ) values ( 500,  TO_DATE('2023-02-01', 'YYYY-MM-DD'), 43, 23, 13);
-
+```
 
 insert by excel:
 insert to Child:
@@ -290,6 +291,7 @@ Restore:
 part b:
 שאילתות:
 שאילתא Select 1:
+```SQL
 SELECT d.Daycare_Name, d.d_id,
        EXTRACT(YEAR FROM r.Registration_Date) AS Year, 
        COUNT(r.Registration_id) AS Total_Registrations
@@ -297,7 +299,7 @@ FROM Registration r
 JOIN Daycare d ON r.D_ID = d.D_ID
 GROUP BY d.Daycare_Name, EXTRACT(YEAR FROM r.Registration_Date),d.d_id
 ORDER BY Year,d.Daycare_Name;
-
+```
 
 השאילתה מוציאה את שמות הגנים, מזהי הגנים, שנת הרישום, ומספר הרישומים הכולל עבור כל גן בשנה מסוימת, ממסד הנתונים. היא מציגה את התוצאות בסדר כרונולוגי לפי שנה ולאחר מכן לפי שם הגן.
 
@@ -305,7 +307,7 @@ ORDER BY Year,d.Daycare_Name;
 
 
 שאילתא Select 2:
-
+```SQL
 SELECT  c.Child_ID, c.Child_Name,  d.Daycare_Name,  d.Location ,  d.Sector, 
         t.Teacher_Name, ct.Catering_Name, ct.Kashrut
 FROM Child c  JOIN Registration r ON c.Child_ID = r.Child_ID
@@ -315,13 +317,14 @@ WHERE d.Sector = 'DATI' or d.Sector='CHAREDI' AND d.D_ID
  IN ( SELECT D_ID
       FROM Daycare
       WHERE Sector = 'DATI' or d.Sector= 'CHARERDI');
-
+```
 השאילתה מוציאה פרטים על ילדים, גנים, מורים ושירותי הסעדה עבור גנים בסקטור דתי או חרדי. היא עושה זאת על ידי ביצוע צירוף של מספר טבלאות עם סינון על פי תנאי הסקטור בגנים.
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/f45f1523-f85a-447f-ae0b-cb0f82601c5d)
 
 
 שאילתא Select 3:
+```SQL
 Select ct.Catering_name,
 (  
     Select Count( distinct r1.child_id)
@@ -332,13 +335,14 @@ Select ct.Catering_name,
  ) As Number_of_children
  from Catering ct
  order by  Number_of_children desc;
-
+```
 השאילתה מוציאה את שמות שירותי ההסעדה ומספר הילדים הייחודי שנרשמו לגנים שמשתמשים בשירות ההסעדה הנוכחי בשנה הנוכחית. התוצאות ממוינות לפי מספר הילדים בסדר יורד.
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/2ea0dd28-8819-4298-a4b2-1776cb761bb6)
 
 שאילתא Select 4:
 
+```SQL
 SELECT t.Teacher_Name, d.Daycare_Name,(SELECT COUNT(r2.Child_ID)
         FROM Registration r2
         WHERE r2.D_ID = d.D_ID
@@ -353,13 +357,14 @@ WHERE d.D_ID IN ( SELECT r.D_ID
                           FROM Registration r2
                           WHERE EXTRACT(YEAR FROM r2.registration_date) = EXTRACT(YEAR FROM current_date)
                           GROUP BY r2.D_ID   )  ));
-
+```
 השאילתה מוציאה את שמות המורים ושמות הגנים יחד עם מספר הילדים שנרשמו בשנה הנוכחית עבור גנים שיש להם יותר ממספר הילדים הממוצע הנרשם לגנים בשנה הנוכחית. היא עושה זאת על ידי ביצוע צירוף של טבלת המורים וטבלת הגנים עם סינון על פי תנאי הממוצע בגנים.
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/e1fc270c-c1d0-487a-889d-827c66054ac1)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/672e118b-7e71-4b41-8cd7-e89af7a07681)
 
 שאילתא update 1:
+```SQL
 UPDATE Registration
 SET Price = Price * 1.10
 WHERE D_ID = (
@@ -367,7 +372,7 @@ WHERE D_ID = (
   FROM Daycare 
   WHERE D_id = 5;
   and Extract (year from registration_date)='2024';
-
+```
 השאילתה מבצעת עדכון לטבלת Registration על מנת להעלות ב-10% את המחירים (Price) של רישומים בגנים שהם בעלי מזהה (D_ID) של 5 ובנוסף, התאריך של הרישום הוא בשנת 2024.
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/2c8b3b64-ad1a-4cc8-99a0-965632f86d86)
@@ -381,6 +386,7 @@ WHERE D_ID = (
 
 
 שאילתא update 2:
+```SQL
 update registration r
 set r.price = r.price * 1.05
 WHERE EXTRACT(YEAR FROM r.registration_date) = 2024
@@ -389,7 +395,7 @@ AND r.D_ID IN (
     FROM Daycare_Activities da
     GROUP BY da.D_ID
     HAVING COUNT(da.Operator_Name) >= 2
-
+```
 השאילתה מבצעת עדכון לטבלת Registration על מנת להעלות ב-5% את המחירים (Price) של רישומים בגנים שהם תחת פעילויות בהם יש לפחות שני אופרטורים (Operator_Name), ובנוסף, התאריך של הרישום הוא בשנת 2024.
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/6e6b9f60-7ad2-41b9-a5c8-9b81aed64137)
@@ -438,6 +444,7 @@ AND r.D_ID IN (
 שאילתות עם פרמטרים:
 
 שאילתא 1:
+```SQL
 SELECT d.Daycare_Name, d.d_id,
     EXTRACT(YEAR FROM r.Registration_Date) AS Year,
     COUNT(r.Registration_id) AS Total_Registrations
@@ -447,11 +454,12 @@ WHERE d.daycare_name = '&<name = "daycare_name" list = "select daycare_Name from
       AND r.registration_date  between &<name= "date_from" type= "date" hint="Use dd/m/yyyy format">
       and &<name= "date_to" type= "date"  hint="Use dd/m/yyyy format">
 GROUP BY d.Daycare_Name, d.d_id, EXTRACT(YEAR FROM r.Registration_Date);
+```
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/14f0b07e-5843-457b-9bce-7ef0e6b1c079)
 
 שאילתא 2:
-
+```SQL
 SELECT d.Daycare_Name,d.sector,  d.Location,  cat.Catering_Name, cat.Kashrut
 FROM  Daycare d
 JOIN Catering cat ON d.C_ID = cat.C_ID
@@ -459,11 +467,13 @@ WHERE
     d.Location ='&<name="location" list="select location from daycare">'
     AND cat.Kashrut = '&<name="kashrut" list="select kashrut  from catering">'
     AND d.Sector = '&<name="sector" list="select sector  from daycare">';
+```
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/0db6ec11-3381-40d9-9bc7-e618542aaed5)
 
 שאילתא 3:
 
+```SQL
 SELECT t.Teacher_Name, ch.Child_Name, ch.Child_DOB, d.Daycare_Name
 FROM Teacher t
 JOIN Daycare d ON t.D_ID = d.D_ID
@@ -474,12 +484,13 @@ WHERE
     and r.registration_date between &<name="from_date" type="date">
     and &<name="to_date" type="date">
 ORDER BY   ch.Child_Name;
+```
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/5b0036e4-ef35-4942-b391-f6dbd7e62502)
 
 שאילתא 4:
 
-
+```SQL
 SELECT  d.Daycare_Name,
     d.Location,
     a.ACTIVITY_TYPE ,
@@ -489,6 +500,7 @@ JOIN  Daycare_Activities da ON d.D_ID = da.D_ID
 JOIN  Activities a ON da.Operator_Name = a.Operator_Name
 WHERE  d.Location ='&<name="location" list="select location from daycare">'
     AND a.ACTIVITY_TYPE  = '&<name="activity_type" list="select activity_type  from Activities">'
+```
     
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/59abb4ce-6d0c-4c73-b240-ea855becfb65)
 

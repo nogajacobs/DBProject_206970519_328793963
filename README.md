@@ -60,7 +60,7 @@ Daycare Activities(Daycare, Activities)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/72e5ac58-072b-4dcf-8e47-8ca0fe3debb0)
 
 יצירת הטבלאות:
-
+```SQL
 CREATE TABLE Child 
 (
 
@@ -148,7 +148,7 @@ CREATE TABLE Registration
   FOREIGN KEY (Child_ID) REFERENCES Child (Child_ID)
 
 );
-
+```
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/72c34823-f73a-47f0-bab0-37fcbc5f5a16)
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/66a47412-54f7-45ad-a8ff-43684ddc0ca7)

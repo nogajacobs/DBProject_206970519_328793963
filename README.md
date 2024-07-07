@@ -597,6 +597,8 @@ BEGIN
         WHEN 'Intermediate' THEN v_hourly_wage := 45;
         WHEN 'Experienced' THEN v_hourly_wage := 50;
         WHEN 'Senior' THEN v_hourly_wage := 55;
+        ELSE RAISE_APPLICATION_ERROR(-20001, 'Invalid seniority level');
+
     END CASE;
 
 --calculate hours worked per day and per week
@@ -621,6 +623,12 @@ BEGIN
     v_total_salary := (v_hourly_wage * v_hours_per_week*4) + v_extra_bonus;
 
     RETURN v_total_salary;
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RAISE_APPLICATION_ERROR(-20002, 'No children found for the teacher''s daycare');
+    WHEN OTHERS THEN
+        RAISE_APPLICATION_ERROR(-20003, 'An unexpected error occurred: ' || SQLERRM);
+
 END;
 
 

@@ -655,6 +655,9 @@ END get_daycare_location;
 תוצאת ריצה:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/45a0e8a6-f2b6-438c-a9e3-80aaee7ac876)
 
+זריקת חריגה:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/dffcfbcd-9d6a-4d9b-9c00-658962f7d023)
+
 בשביל 2 מהפרוצדורת היהו צרכיות להוסיף לטבלה של גננת שדה של משכורת:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/ea78ee53-a039-400d-b85f-b0e0caf08719)
 
@@ -779,6 +782,8 @@ END switch_registered_children;
 
 
 
+זריקת חריגה:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/cc4422d6-0257-4730-8f95-f7e7e5e56a34)
 
 פרוצודורה 2:
 העריה העבירה חוק שכל מוסדי החינוך צריכים לדאוג למנות ללא גלוטן עבור הילדים עם ציליאק.

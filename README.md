@@ -773,8 +773,7 @@ END switch_registered_children;
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/61276149-cc76-4e73-a473-713b2f191500)
 
 אחרי הריצה ניתן לראות שהם עברו לגן מספר 177:
-![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/3699aaa8-6764-427e-b7f1-a6987f84b1f3)
-
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/6c7d2153-705e-4e2e-8e27-5cdca25c8fe4)
 
 
 
@@ -797,6 +796,7 @@ BEGIN
 END match_child_catering;
 ```
 
+פלט התכנית:
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/888d60ec-3f76-4d44-bfde-62520c39431a)
 

@@ -798,6 +798,8 @@ END match_child_catering;
 ```
 
 
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/888d60ec-3f76-4d44-bfde-62520c39431a)
+
 
 תכנית 1:
 

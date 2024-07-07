@@ -649,7 +649,7 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RAISE_APPLICATION_ERROR(-20005, 'Daycare not found');
 END get_daycare_location;
-'''
+```
 תוצאת ריצה:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/45a0e8a6-f2b6-438c-a9e3-80aaee7ac876)
 

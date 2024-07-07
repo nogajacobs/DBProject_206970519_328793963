@@ -526,7 +526,8 @@ WHERE  d.Location ='&<name="location" list="select location from daycare">'
 
 פונקציה 1:
 פונקציה זו מחשבת את המחיר החדש לרישום בהתאם להנחה שניתנה ומחזירה את המחיר החדש:
-```CREATE OR REPLACE FUNCTION calculate_new_price(
+```	SQL
+CREATE OR REPLACE FUNCTION calculate_new_price(
     p_registration_id INT,
     P_discount Float
 ) RETURN VARCHAR2 IS
@@ -546,11 +547,20 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20002, 'Registration ID not found');
 END calculate_new_price;
 ```
+לפני ריצה:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/cf50bf54-21cb-4c63-855e-2355d818d3f6)
+אחרי ריצה:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/7798490a-14df-4af0-84c2-a3e259242063)
+
+זריקת חריגה:
+
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/61f9bfc2-45c4-4cea-8e82-7bbf9699cb22)
+
 
 פונקציה 2:
 יצא חוק חדש ששכר הגננות יהיה אישי לכל לפי מספר השעות, כמות נסיון, וכמות ילדים שהיא מלמדת. 
  פונקציה זו מחשבת את השכר הכולל של מורה בגן הילדים בהתאם למספר הילדים שנרשמים אליו. השכר הכולל נקבע על פי שעות העבודה השבועיות והשעתיות של המורה, תוך כדי ניתוח של רמת הנסיון שלו. תוספת נוספת מחושבת עבור ילדים נוספים מעבר למספר שלושה.
- ```
+ ```SQL
 
 CREATE OR REPLACE FUNCTION calculate_teacher_salary(
     p_teacher_id INT
@@ -621,9 +631,14 @@ END;
 
 
 ```
+תוצאת ריצה:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/15c62ff9-10a7-45da-8d77-2802a1312e26)
+
+
 פונקציה 3:
 פונקציה זו מחזירה את המיקום של גן הילדים בהתאם למספר הזיהוי שלו.
-```CREATE OR REPLACE FUNCTION get_daycare_location(p_daycare_id INT) RETURN VARCHAR2 IS
+```
+CREATE OR REPLACE FUNCTION get_daycare_location(p_daycare_id INT) RETURN VARCHAR2 IS
     v_location VARCHAR2(100);
 BEGIN
     SELECT Location INTO v_location FROM Daycare WHERE D_ID = p_daycare_id;
@@ -633,10 +648,16 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20005, 'Daycare not found');
 END get_daycare_location;
 '''
+תוצאת ריצה:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/45a0e8a6-f2b6-438c-a9e3-80aaee7ac876)
+
+בשביל 2 מהפרוצדורת היהו צרכיות להוסיף לטבלה של גננת שדה של משכורת:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/ea78ee53-a039-400d-b85f-b0e0caf08719)
 
 פורצודורה 1:
-בצהרון play and learn הייתה מקרה של אלימות מהמורה, לכן הערייה העבירה את כל הילדים לצהרון אחר בעיר, ונתנה הנחה של 50% לרישום החדש.
-```CREATE OR REPLACE PROCEDURE switch_registered_children(
+בצהרון play and learn הייתה מקרה של אלימות מהמורה, לכן הערייה העבירה את כל הילדים לצהרון אחר בעיר, ונתנה הנחה של 50% לרישום החדש, ומעדכנת את השכר של הגננת החדשה בהתאם:
+```
+CREATE OR REPLACE PROCEDURE switch_registered_children(
     p_abusive_tchr_id INT,
     p_new_dc_id INT,
     p_discount FLOAT
@@ -743,6 +764,37 @@ BEGIN
 END switch_registered_children;
 ```
 
+פלט הפרוצודורה:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/bc79eb8b-2b3d-4941-8c91-27aca877963d)
+לפני ריצה - אפשר לראות שהילדים רשומים לצהרון מס 4:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/61276149-cc76-4e73-a473-713b2f191500)
+
+אחרי הריצה ניתן לראות שהם עברו לגן מספר 177:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/3699aaa8-6764-427e-b7f1-a6987f84b1f3)
+
+
+
+
+
+פרוצודורה 2:
+העריה העבירה חוק שכל מוסדי החינוך צריכים לדאוג למנות ללא גלוטן עבור הילדים עם ציליאק.
+לשם כך הוספנו לטבלאות של ילד  וקיטרינג שדה של ציליאק:
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/6410455b-40d9-4ca1-a5fb-97d9e0206c64)
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/a323fb1d-d077-4f03-bea8-9c4e89a16d84)
+וכן יצרנו פרוצודורה שעוברת על הילדים ואם הילד ציליאקי מוצא עבורו קייטרינג עם אופציה של ציליאק:
+```SQL
+CREATE OR REPLACE PROCEDURE match_child_catering AS
+BEGIN
+    FOR child_rec IN (SELECT * FROM "CHILD" WHERE CELIAC = 'YES') LOOP
+        FOR catering_rec IN (SELECT * FROM "CATERING" WHERE CELIAC = 'YES') LOOP
+            -- Logic to match child and catering service (example: printing the match)
+            DBMS_OUTPUT.PUT_LINE('Child ' || child_rec.CHILD_NAME || ' can be matched with catering ' || catering_rec.CATERING_NAME);
+        END LOOP;
+    END LOOP;
+END match_child_catering;
+```
+
+
 
 תכנית 1:
 
@@ -783,6 +835,9 @@ END;
 
 ```
 
+פלט התכנית:
+
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/4f4a8275-19e7-453e-b014-f09f523816e3)
 
 תכנית 2
 
@@ -815,6 +870,9 @@ END;
 
 
 ```
+פלט  התכנית:
+
+![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/3f983f27-24b3-476f-b83b-5507503a4d26)
 
 
 

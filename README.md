@@ -633,7 +633,9 @@ END;
 ```
 תוצאת ריצה:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/15c62ff9-10a7-45da-8d77-2802a1312e26)
+זריקת חריגה:
 
+![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/69aa12fc-ff2f-4cc6-a802-a9891db28231)
 
 פונקציה 3:
 פונקציה זו מחזירה את המיקום של גן הילדים בהתאם למספר הזיהוי שלו.

@@ -637,7 +637,7 @@ END;
 
 פונקציה 3:
 פונקציה זו מחזירה את המיקום של גן הילדים בהתאם למספר הזיהוי שלו.
-```
+```SQL
 CREATE OR REPLACE FUNCTION get_daycare_location(p_daycare_id INT) RETURN VARCHAR2 IS
     v_location VARCHAR2(100);
 BEGIN
@@ -656,7 +656,8 @@ END get_daycare_location;
 
 פורצודורה 1:
 בצהרון play and learn הייתה מקרה של אלימות מהמורה, לכן הערייה העבירה את כל הילדים לצהרון אחר בעיר, ונתנה הנחה של 50% לרישום החדש, ומעדכנת את השכר של הגננת החדשה בהתאם:
-```
+```SQL
+
 CREATE OR REPLACE PROCEDURE switch_registered_children(
     p_abusive_tchr_id INT,
     p_new_dc_id INT,
@@ -799,7 +800,7 @@ END match_child_catering;
 תכנית 1:
 
 תכנית זו מחשבת את הרווח של כל גן הילדים בשנה הנוכחית, על ידי חישוב ההכנסות הכוללות (סכום מחירי הרישום) וחישוב השכר הכולל של כל המורים.
-```
+```SQL
 DECLARE
     v_total_income NUMBER;
     v_total_salary NUMBER;

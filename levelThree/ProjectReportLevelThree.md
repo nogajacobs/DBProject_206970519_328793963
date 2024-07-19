@@ -134,6 +134,26 @@ END get_daycare_location;
 זריקת חריגה:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/dffcfbcd-9d6a-4d9b-9c00-658962f7d023)
 
+פונקציה 4:
+```SQL
+create or replace function count_celiac_kids_per_catering(p_catering_number  in NUMBER) return number is
+v_celiac_kids_count NUMBER := 0;
+BEGIN
+    -- Query to count celiac kids per caterer
+    SELECT COUNT(c.Child_ID)
+    INTO v_celiac_kids_count
+    FROM Child c
+    JOIN Registration r ON c.Child_ID = r.Child_ID
+    JOIN Daycare d ON r.D_ID = d.D_ID
+    WHERE d.C_ID = p_catering_number
+      AND c.Celiac = 'YES';
+
+    -- Return the count of celiac kids
+    RETURN v_celiac_kids_count;
+END count_celiac_kids_per_catering;
+```
+![image](https://github.com/user-attachments/assets/7c6befa3-f7b8-4811-9d2f-3ba74b7e60bd)
+
 בשביל 2 מהפרוצדורת היהו צרכיות להוסיף לטבלה של גננת שדה של משכורת:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/ea78ee53-a039-400d-b85f-b0e0caf08719)
 

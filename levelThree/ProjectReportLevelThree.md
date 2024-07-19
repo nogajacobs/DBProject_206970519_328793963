@@ -136,9 +136,22 @@ END get_daycare_location;
 
 פונקציה 4:
 ```SQL
-create or replace function count_celiac_kids_per_catering(p_catering_number  in NUMBER) return number is
-v_celiac_kids_count NUMBER := 0;
+CREATE OR REPLACE FUNCTION count_celiac_kids_per_catering(p_catering_number IN NUMBER)
+RETURN NUMBER IS
+    v_celiac_kids_count NUMBER := 0;
+    v_catering_exists NUMBER := 0;
 BEGIN
+    -- Check if the catering number exists
+    SELECT COUNT(*)
+    INTO v_catering_exists
+    FROM Catering
+    WHERE C_ID = p_catering_number;
+
+    IF v_catering_exists = 0 THEN
+        -- Raise an exception if the catering number does not exist
+        RAISE_APPLICATION_ERROR(-20001, 'Catering number ' || p_catering_number || ' does not exist.');
+    END IF;
+
     -- Query to count celiac kids per caterer
     SELECT COUNT(c.Child_ID)
     INTO v_celiac_kids_count
@@ -150,9 +163,23 @@ BEGIN
 
     -- Return the count of celiac kids
     RETURN v_celiac_kids_count;
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        -- Handle case when no data is found
+        RAISE_APPLICATION_ERROR(-20010, 'No data found for catering number ' || p_catering_number);
+        RETURN 0; -- Return 0 if no data is found
+    WHEN OTHERS THEN
+        -- Handle any other exceptions
+        RAISE_APPLICATION_ERROR(-20009, 'An error occurred: ' || SQLERRM);
+        RETURN -1; -- Return -1 to indicate an error occurred
 END count_celiac_kids_per_catering;
 ```
-![image](https://github.com/user-attachments/assets/7c6befa3-f7b8-4811-9d2f-3ba74b7e60bd)
+
+![image](https://github.com/user-attachments/assets/302d0177-9c6c-4d5c-92ba-9fef8564cc11)
+
+זריקת חריגה:
+![image](https://github.com/user-attachments/assets/39cb5832-7ac4-432a-b3ee-d6ba0cbe2f79)
 
 בשביל 2 מהפרוצדורת היהו צרכיות להוסיף לטבלה של גננת שדה של משכורת:
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/ea78ee53-a039-400d-b85f-b0e0caf08719)
@@ -298,6 +325,7 @@ BEGIN
     END LOOP;
 END match_child_catering;
 ```
+
 
 פלט התכנית:
 

@@ -1,0 +1,29 @@
+--3.
+--This query helps parents find the best daycares in a specific sector by identifying those with the most experienced teachers, 
+--the number of activities offered, and the catering services provided.
+-- Parameters: :p_sector (Sector)
+SELECT 
+    d.Daycare_Name,
+    d.Location,
+    AVG(t.Seniority) AS Average_Teacher_Seniority,
+    COUNT(DISTINCT da.Operator_Name) AS Number_Of_Activities,
+    cat.Catering_Name,
+    cat.Kashrut
+FROM 
+    Daycare d
+JOIN 
+    Teacher t ON d.D_ID = t.D_ID
+LEFT JOIN 
+    Daycare_Activities da ON d.D_ID = da.D_ID
+LEFT JOIN 
+    Catering cat ON d.C_ID = cat.C_ID
+WHERE 
+    d.Sector = :p_sector
+GROUP BY 
+    d.Daycare_Name,
+    d.Location,
+    cat.Catering_Name,
+    cat.Kashrut
+ORDER BY 
+    Average_Teacher_Seniority DESC
+FETCH FIRST 5 ROWS ONLY;

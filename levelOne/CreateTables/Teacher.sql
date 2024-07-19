@@ -1,0 +1,12 @@
+CREATE TABLE Teacher
+(
+  Teacher_Name INT NOT NULL,
+  Teacher_D.O.B INT NOT NULL,
+  T_ID INT NOT NULL,
+  Degree INT NOT NULL,
+  Teacher_Phone INT NOT NULL,
+  Seniority INT NOT NULL,
+  D_ID INT NOT NULL,
+  PRIMARY KEY (T_ID),
+  FOREIGN KEY (D_ID) REFERENCES Daycare(D_ID)
+);

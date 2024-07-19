@@ -1,4 +1,3 @@
-
 DECLARE
     v_total_income NUMBER;
     v_total_salary NUMBER;

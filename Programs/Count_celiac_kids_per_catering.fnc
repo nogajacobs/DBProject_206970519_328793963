@@ -1,5 +1,3 @@
-
-
 DECLARE
     v_caterer_name VARCHAR2(100);
     v_celiac_kids_count NUMBER;

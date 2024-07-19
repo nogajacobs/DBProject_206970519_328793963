@@ -311,19 +311,49 @@ END switch_registered_children;
 פרוצודורה 2:
 העריה העבירה חוק שכל מוסדי החינוך צריכים לדאוג למנות ללא גלוטן עבור הילדים עם ציליאק.
 לשם כך הוספנו לטבלאות של ילד  וקיטרינג שדה של ציליאק:
+![image](https://github.com/user-attachments/assets/4122c7af-c3e1-490a-8aed-2e66963a7d00)
+
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/6410455b-40d9-4ca1-a5fb-97d9e0206c64)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/a323fb1d-d077-4f03-bea8-9c4e89a16d84)
 וכן יצרנו פרוצודורה שעוברת על הילדים ואם הילד ציליאקי מוצא עבורו קייטרינג עם אופציה של ציליאק:
 ```SQL
-CREATE OR REPLACE PROCEDURE match_child_catering AS
+-- Create or replace a procedure named MATCH_CHILD_CATERING
+CREATE OR REPLACE PROCEDURE MATCH_CHILD_CATERING AS
 BEGIN
-    FOR child_rec IN (SELECT * FROM "CHILD" WHERE CELIAC = 'YES') LOOP
-        FOR catering_rec IN (SELECT * FROM "CATERING" WHERE CELIAC = 'YES') LOOP
-            -- Logic to match child and catering service (example: printing the match)
-            DBMS_OUTPUT.PUT_LINE('Child ' || child_rec.CHILD_NAME || ' can be matched with catering ' || catering_rec.CATERING_NAME);
-        END LOOP;
-    END LOOP;
-END match_child_catering;
+    -- Loop to find all celiac children
+    FOR child_rec IN (SELECT * FROM "NOREN"."CHILD" WHERE CELIAC = 'YES') LOOP
+        -- Loop to find the daycare for the current child
+        FOR reg_rec IN (
+            SELECT d.D_ID, d.LOCATION, d.DAYCARE_NAME 
+            FROM "NOREN"."REGISTRATION" r
+            -- Join with the DAYCARE table based on D_ID
+            JOIN "NOREN"."DAYCARE" d ON r.D_ID = d.D_ID
+            -- Filter by the CHILD_ID of the current child
+            WHERE r.CHILD_ID = child_rec.CHILD_ID
+        ) LOOP
+            -- Print information about the child and the daycare
+            DBMS_OUTPUT.PUT_LINE('Child ' || child_rec.CHILD_NAME || ' is registered at daycare ' || reg_rec.DAYCARE_NAME || ' located at ' || reg_rec.LOCATION);
+
+            -- Loop to find the two suitable catering services for the current child
+            FOR catering_rec IN ( 
+                SELECT * 
+                FROM (
+                    -- Select all caterings suitable for celiac children
+                    SELECT c.*
+                    FROM "NOREN"."CATERING" c
+                    WHERE c.CELIAC = 'YES'
+                    -- Randomly order the list of caterings
+                    ORDER BY dbms_random.value
+                ) 
+                -- Select the first two caterings
+                WHERE ROWNUM <= 2
+            ) LOOP
+                -- Print information about the child and the suitable catering services
+                DBMS_OUTPUT.PUT_LINE('Child ' || child_rec.CHILD_NAME || ' can be matched with catering ' || catering_rec.CATERING_NAME);
+            END LOOP; -- End catering loop
+        END LOOP; -- End daycare loop
+    END LOOP; -- End child loop
+END MATCH_CHILD_CATERING; -- End procedure
 ```
 
 
@@ -411,4 +441,27 @@ END;
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/73253528/3f983f27-24b3-476f-b83b-5507503a4d26)
 
 
+תוכנית 3:
+```SQL
 
+--Testing the feasibility of preparing gluten-free meals
+DECLARE
+    v_celiac_kids_count NUMBER := 0; -- משתנה לאחסון תוצאת הפונקציה
+
+BEGIN
+    -- לולאה שמעבור על כל ה-Catering בפרויקט
+    FOR c_rec IN (SELECT C_ID FROM "NOREN"."DAYCARE") LOOP
+        -- קריאה לפונקציה ואחסון התוצאה במשתנה
+        v_celiac_kids_count := count_celiac_kids_per_catering(c_rec.C_ID);
+
+        -- בדיקה אם יש מעל ל-2 ילדים עם צליאק ב-Catering נוכחי
+        IF v_celiac_kids_count > 2 THEN
+            -- הדפסת הודעה שמשתלמת להכין ארוחות ללא גלוטן ב-Catering זה
+            DBMS_OUTPUT.PUT_LINE('It is worthwhile to prepare gluten-free meals for Catering number ' || c_rec.C_ID);
+        END IF;
+    END LOOP;
+END;
+
+```
+
+![image](https://github.com/user-attachments/assets/c81064ab-33ca-4898-b701-699bdd86f381)

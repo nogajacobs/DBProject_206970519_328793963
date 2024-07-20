@@ -1,12 +1,23 @@
---4. find the daycares located in a specific area and the catering services they use, 
---including the Kashrut level:
- --To help parents identify daycare centers that meet their specific location and dietary requirements for their children.
+-- שליפת גני הילדים הממוקמים באזור מסוים ושירותי ההסעדה שהם משתמשים בהם,
+-- כולל רמת הכשרות:
+-- מטרה: לעזור להורים לזהות גני ילדים שעונים על דרישות המיקום והדרישות התזונתיות הספציפיות עבור ילדיהם.
 
-SELECT d.Daycare_Name, c.Catering_Name, c.Kashrut
-FROM Daycare d
-JOIN Catering c ON d.C_ID = c.C_ID
-WHERE d.Location = 123 AND c.C_ID IN (
-  SELECT d.C_ID
-  FROM Daycare d
-  WHERE d.Location = 123
-);
+SELECT 
+    d.Daycare_Name, -- שם גן הילדים
+    c.Catering_Name, -- שם שירות ההסעדה
+    c.Kashrut -- רמת הכשרות
+FROM 
+    Daycare d
+JOIN 
+    Catering c ON d.C_ID = c.C_ID -- הצטרפות לטבלת Catering לפי מזהה שירות ההסעדה
+WHERE 
+    d.Location = 123 -- סינון לפי מיקום גן הילדים (החלף 123 במיקום הספציפי הרצוי)
+    AND c.C_ID IN (
+        -- תת-שאילתה לבחירת גני הילדים הממוקמים באזור הספציפי
+        SELECT 
+            d.C_ID -- מזהה שירות ההסעדה
+        FROM 
+            Daycare d
+        WHERE 
+            d.Location = 123 -- סינון לפי מיקום גן הילדים (החלף 123 במיקום הספציפי הרצוי)
+    );

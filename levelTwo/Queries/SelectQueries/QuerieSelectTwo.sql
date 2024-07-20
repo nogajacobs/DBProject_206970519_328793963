@@ -1,35 +1,35 @@
--- This query returns detailed information about each child in the 'DATI' sector,
--- including their daycare and the associated catering service.
+-- שאילתה זו מחזירה מידע מפורט על כל ילד במגזר 'דתי',
+-- כולל גן הילדים ושירות ההסעדה המשויך.
 
--- Select the child ID, child name, daycare name, location, sector, teacher name, catering name, and kashrut level
+-- שליפת מזהה הילד, שם הילד, שם גן הילדים, מיקום, מגזר, שם הגננת, שם ההסעדה ורמת הכשרות
 SELECT 
-    c.Child_ID, 
-    c.Child_Name, 
-    d.Daycare_Name, 
-    d.Location, 
-    d.Sector, 
-    t.Teacher_Name, 
-    ct.Catering_Name, 
-    ct.Kashrut
+    c.Child_ID, -- מזהה הילד
+    c.Child_Name, -- שם הילד
+    d.Daycare_Name, -- שם גן הילדים
+    d.Location, -- מיקום גן הילדים
+    d.Sector, -- מגזר גן הילדים
+    t.Teacher_Name, -- שם הגננת
+    ct.Catering_Name, -- שם שירות ההסעדה
+    ct.Kashrut -- רמת הכשרות
 
--- From the Child table alias 'c'
+-- מתוך הטבלה Child עם כינוי 'c'
 FROM Child c
 
--- Join the Registration table alias 'r' on the common column Child_ID
+-- הצטרפות לטבלת Registration עם כינוי 'r' לפי עמודת Child_ID
 JOIN Registration r ON c.Child_ID = r.Child_ID
 
--- Join the Daycare table alias 'd' on the common column D_ID
+-- הצטרפות לטבלת Daycare עם כינוי 'd' לפי עמודת D_ID
 JOIN Daycare d ON r.D_ID = d.D_ID
 
--- Join the Teacher table alias 't' on the common column D_ID
+-- הצטרפות לטבלת Teacher עם כינוי 't' לפי עמודת D_ID
 JOIN Teacher t ON d.D_ID = t.D_ID
 
--- Left join the Catering table alias 'ct' on the common column C_ID
+-- הצטרפות שמאלית לטבלת Catering עם כינוי 'ct' לפי עמודת C_ID
 LEFT JOIN Catering ct ON d.C_ID = ct.C_ID
 
--- Filter the results to include only records where the daycare sector is 'DATI'
+-- סינון התוצאות כך שיכללו רק רשומות שבהן מגזר גן הילדים הוא 'דתי'
 WHERE d.Sector = 'DATI' AND d.D_ID IN (
-    -- Subquery to select daycares in the 'DATI' sector
+    -- תת-שאילתה לבחירת גני הילדים במגזר 'דתי'
     SELECT D_ID
     FROM Daycare
     WHERE Sector = 'DATI'

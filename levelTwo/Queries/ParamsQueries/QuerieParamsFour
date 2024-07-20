@@ -1,29 +1,30 @@
---3.
---This query helps parents find the best daycares in a specific sector by identifying those with the most experienced teachers, 
---the number of activities offered, and the catering services provided.
--- Parameters: :p_sector (Sector)
+-- 3.
+-- שאילתה זו עוזרת להורים למצוא את גני הילדים הטובים ביותר במגזר ספציפי
+-- על ידי זיהוי הגנים עם המורים הוותיקים ביותר, מספר הפעילויות המוצעות, ושירותי ההסעדה המסופקים.
+-- פרמטר: :p_sector (מגזר)
+
 SELECT 
-    d.Daycare_Name,
-    d.Location,
-    AVG(t.Seniority) AS Average_Teacher_Seniority,
-    COUNT(DISTINCT da.Operator_Name) AS Number_Of_Activities,
-    cat.Catering_Name,
-    cat.Kashrut
+    d.Daycare_Name, -- שם גן הילדים
+    d.Location, -- מיקום גן הילדים
+    AVG(t.Seniority) AS Average_Teacher_Seniority, -- גיל הממוצע של המורים בגן הילדים
+    COUNT(DISTINCT da.Operator_Name) AS Number_Of_Activities, -- מספר הפעילויות השונות המוצעות בגן הילדים
+    cat.Catering_Name, -- שם שירות ההסעדה
+    cat.Kashrut -- רמת הכשרות של שירות ההסעדה
 FROM 
     Daycare d
 JOIN 
-    Teacher t ON d.D_ID = t.D_ID
+    Teacher t ON d.D_ID = t.D_ID -- הצטרפות לטבלת Teacher לפי מזהה גן הילדים
 LEFT JOIN 
-    Daycare_Activities da ON d.D_ID = da.D_ID
+    Daycare_Activities da ON d.D_ID = da.D_ID -- הצטרפות לטבלת Daycare_Activities כדי לקבל את הפעילויות המוצעות
 LEFT JOIN 
-    Catering cat ON d.C_ID = cat.C_ID
+    Catering cat ON d.C_ID = cat.C_ID -- הצטרפות לטבלת Catering כדי לקבל פרטים על שירותי ההסעדה
 WHERE 
-    d.Sector = :p_sector
+    d.Sector = :p_sector -- סינון לפי המגזר שניתן (פרמטר)
 GROUP BY 
-    d.Daycare_Name,
-    d.Location,
-    cat.Catering_Name,
-    cat.Kashrut
+    d.Daycare_Name, -- קיבוץ לפי שם גן הילדים
+    d.Location, -- קיבוץ לפי מיקום גן הילדים
+    cat.Catering_Name, -- קיבוץ לפי שם שירות ההסעדה
+    cat.Kashrut -- קיבוץ לפי רמת הכשרות של שירות ההסעדה
 ORDER BY 
-    Average_Teacher_Seniority DESC
-FETCH FIRST 5 ROWS ONLY;
+    Average_Teacher_Seniority DESC -- מיון לפי גיל הממוצע של המורים, מהגבוה לנמוך
+FETCH FIRST 5 ROWS ONLY; -- הצגת 5 התוצאות הראשונות בלבד

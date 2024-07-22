@@ -1,15 +1,13 @@
 
 ---------------------ORDERS<->dAYCARE----------------
-
--- Create table
 create table ORDERS
 (
-  orderid      INTEGER not null,
-  ticketamount INTEGER not null,
-  ticketcost   INTEGER not null,
-  orderdate    DATE not null,
-  eventid      INTEGER not null,
-  d_id         INTEGER
+  orderid      INTEGER not null, -- מזהה ההזמנה (Primary Key)
+  ticketamount INTEGER not null, -- כמות הכרטיסים
+  ticketcost   INTEGER not null, -- עלות הכרטיס
+  orderdate    DATE not null, -- תאריך ההזמנה
+  eventid      INTEGER not null, -- מזהה האירוע (Foreign Key)
+  d_id         INTEGER -- מזהה הגן
 )
 tablespace SYSTEM
   pctfree 10
@@ -23,6 +21,7 @@ tablespace SYSTEM
     minextents 1
     maxextents unlimited
   );
+
 -- Create/Recreate primary, unique and foreign key constraints 
 alter table ORDERS
   add primary key (ORDERID)

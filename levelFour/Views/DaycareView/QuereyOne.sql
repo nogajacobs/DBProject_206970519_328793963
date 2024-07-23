@@ -3,7 +3,7 @@
 SELECT 
     Teacher_Name,
     Salary,
-    Daycare_Name,
+    Daycare_Name
 FROM 
     View_Teachers_Daycare_Details
 WHERE 

@@ -251,23 +251,22 @@ WHERE  d.Location ='&<name="location" list="select location from daycare">'
 אילוצים:
 
 אילוץ 1:
-אילוץ זה מבטיח שתאריך הלידה של הילד לא יהיה תאריך עתידי.
+אילוץ זה מבטיח שלכל חברת קייטרינג יהיה שם ייחודי למניעת כפילויות.
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/da744c8f-7ce7-4f47-a6cb-3b575265beb9)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/383161c2-d4c5-457e-92d3-a17e0c837e13)
 
 
 אילוץ 2:
+אילוץ זה מבטיח ששעות הסגירה תמיד יהיו מאוחרות משעות הפתיחה בטבלת הגנים.
 
-אילוץ זה מבטיח שלכל חברת קייטרינג יהיה שם ייחודי למניעת כפילויות.
 
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/bf8428cd-5ef4-4121-b5ef-7a6023f5b999)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/9fc6e7b6-d654-4ef2-95c0-d8c213456149)
 
 אילוץ 3:
-אילוץ זה מבטיח ששעות הסגירה תמיד יהיו מאוחרות משעות הפתיחה בטבלת הגנים.
-
+אילוץ זה מבטיח שמחיר הרשיום של הילד לגן יהיה גדול מ0.
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/50518a70-35af-42a7-88b7-ba945b5a3c91)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/4f27df40-53f3-4b58-b5b4-cab21bf1ae3c)

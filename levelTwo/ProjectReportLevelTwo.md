@@ -183,6 +183,7 @@ AND r.D_ID IN (
 שאילתות עם פרמטרים:
 
 שאילתא 1:
+שאילתה זו מחזירה את שם הגן, מזהה הגן, שנת הרישום, וסך כל הרישומים לכל שנה עבור שם גן נתון ותאריכי רישום נתונים.
 ```SQL
 SELECT d.Daycare_Name, d.d_id,
     EXTRACT(YEAR FROM r.Registration_Date) AS Year,
@@ -198,6 +199,7 @@ GROUP BY d.Daycare_Name, d.d_id, EXTRACT(YEAR FROM r.Registration_Date);
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/14f0b07e-5843-457b-9bce-7ef0e6b1c079)
 
 שאילתא 2:
+שאילתה זו מחזירה את שם הגן, המגזר, המיקום, שם חברת הקייטרינג וכשרות הקייטרינג עבור מיקום, כשרות ומגזר נתונים.
 ```SQL
 SELECT d.Daycare_Name,d.sector,  d.Location,  cat.Catering_Name, cat.Kashrut
 FROM  Daycare d
@@ -211,7 +213,7 @@ WHERE
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/0db6ec11-3381-40d9-9bc7-e618542aaed5)
 
 שאילתא 3:
-
+שאילתה זו מחזירה את שם המורה, שם הילד, תאריך הלידה של הילד, ושם הגן עבור שם מורה נתון ותאריכי רישום נתונים, ומסדרת לפי שם הילד.
 ```SQL
 SELECT t.Teacher_Name, ch.Child_Name, ch.Child_DOB, d.Daycare_Name
 FROM Teacher t
@@ -228,6 +230,9 @@ ORDER BY   ch.Child_Name;
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/5b0036e4-ef35-4942-b391-f6dbd7e62502)
 
 שאילתא 4:
+שאילתה זו מחזירה את שם הגן, מיקום הגן, סוג הפעילות ושם המפעיל עבור מיקום וסוג פעילות נתונים.
+
+
 
 ```SQL
 SELECT  d.Daycare_Name,
@@ -246,17 +251,22 @@ WHERE  d.Location ='&<name="location" list="select location from daycare">'
 אילוצים:
 
 אילוץ 1:
+אילוץ זה מבטיח שתאריך הלידה של הילד לא יהיה תאריך עתידי.
+
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/da744c8f-7ce7-4f47-a6cb-3b575265beb9)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/383161c2-d4c5-457e-92d3-a17e0c837e13)
 
 
 אילוץ 2:
 
+אילוץ זה מבטיח שלכל חברת קייטרינג יהיה שם ייחודי למניעת כפילויות.
+
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/bf8428cd-5ef4-4121-b5ef-7a6023f5b999)
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/9fc6e7b6-d654-4ef2-95c0-d8c213456149)
 
 אילוץ 3:
+אילוץ זה מבטיח ששעות הסגירה תמיד יהיו מאוחרות משעות הפתיחה בטבלת הגנים.
 
 
 ![image](https://github.com/nogajacobs/DatabaseProject/assets/80648050/50518a70-35af-42a7-88b7-ba945b5a3c91)
